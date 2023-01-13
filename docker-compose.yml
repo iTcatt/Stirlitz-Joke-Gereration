@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  
+  rabbitmq:
+    image: 'rabbitmq:3.6-management-alpine'
+    hostname: rabbitmq
+    restart: always
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    networks:
+      - network
+  
+  server:
+    build: ./server
+    restart: always
+    # environment:
+    #   AMQP_URL: 'amqp://guest:guest@rabbit:5672/?name=Server%20connection'
+    # networks:
+    #   - network
+
+  bot:
+    build: ./bot
+    environment:
+      AMQP_URL: 'amqp://guest:guest@rabbit:5672/?name=Bot%20connection'
+    networks:
+      - network 
+
+networks:
+  network: {}
