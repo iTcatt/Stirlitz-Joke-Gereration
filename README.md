@@ -1,0 +1,2 @@
+# Stirlitz-Joke-Gereration
+OOP 
