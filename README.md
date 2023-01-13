@@ -1,2 +1,2 @@
-# Stirlitz-Joke-Gereration
+# Stirlitz-Joke-Gereration-Bot
 OOP 
