@@ -17,9 +17,9 @@ async def main() -> None:
     # Declaring queue
     queue = await channel.declare_queue("rpc_queue")
 
-    print("[x] Awaiting RPC requests")
+    print("[x] Awaiting RPC requests") #logging 
 
-    # Start listening the queue with name 'hello'
+    # Start listening the queue
     async with queue.iterator() as qiterator:
         message: AbstractIncomingMessage
         async for message in qiterator:
@@ -28,8 +28,7 @@ async def main() -> None:
                     assert message.reply_to is not None
 
                     start = message.body.decode()
-
-                    print(f" [.] I receive {start}")
+                    print(f" [.] I receive {start}") #logging
                     joke = generate_joke(start)
                     response = joke.encode()
 
