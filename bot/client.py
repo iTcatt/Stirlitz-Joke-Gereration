@@ -27,7 +27,6 @@ class RpcClient:
         )
         self.channel = await self.connection.channel()
         self.callback_queue = await self.channel.declare_queue(exclusive=True)
-        # print("I am here", self.callback_queue.name)
         await self.callback_queue.consume(self.on_response)
 
         return self
